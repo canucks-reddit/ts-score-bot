@@ -1,0 +1,177 @@
+openapi: 3.0.0
+info:
+  title: NHL API
+  version: 1.0.0
+
+servers:
+  - url: https://api-web.nhle.com/
+
+paths:
+  /v1/player-spotlight:
+    get:
+      operationId: getPlayers
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+
+  /v1/schedule/now:
+    get:
+      operationId: getSchedule
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+
+  /v1/schedule/{date}:
+    get:
+      operationId: getSchedule
+      parameters:
+        - name: date
+          in: path
+          required: true
+          schema:
+            type: string
+            pattern: '[0-9]{4}-[0-9]{2}-[0-9]{2}'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+
+  /v1/standings-season:
+    get:
+      operationId: standingsSeasons
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+
+  /v1/schedule/playoff-series/{season}/{seriesLetter}:
+    get:
+      operationId: getPlayoffSeriesSchedule
+      parameters:
+        - name: season
+          in: path
+          required: true
+          schema:
+            type: integer
+            pattern: '[0-9]{8}'
+        - name: seriesLetter
+          in: path
+          required: true
+          schema:
+            type: string
+            pattern: '\w'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+
+  /v1/score/now:
+    get:
+      operationId: getDailyAsOfNow
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+
+  /v1/score/{date}:
+    get:
+      operationId: getDailyScores
+      parameters:
+        - name: date
+          in: path
+          required: true
+          schema:
+            type: string
+            pattern: '[0-9]{4}-[0-9]{2}-[0-9]{2}'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+
+  /v1/location:
+    get:
+      operationId: getLocation
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+
+  /v1/season:
+    get:
+      operationId: seasons
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+
+  /v1/skater-stats-leaders/current:
+    get:
+      operationId: current
+      parameters:
+        - name: categories
+          in: query
+          schema:
+            type: string
+        - name: limit
+          in: query
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+
+  /v1/skater-stats-leaders/{season}/{game-type}:
+    get:
+      operationId: skaterStatsLeaders
+      parameters:
+        - name: season
+          in: path
+          required: true
+          schema:
+            type: integer
+            pattern: '[0-9]{8}'
+        - name: game-type
+          in: path
+          required: true
+          schema:
+            type: integer
+        - name: categories
+          in: query
+          schema:
+            type: string
+        - name: limit
+          in: query
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+
+  /v1/where-to-watch:
+    get:
+      operationId: getStreams
+      parameters:
+        - name: include
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
