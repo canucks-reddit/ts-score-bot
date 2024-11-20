@@ -1,0 +1,6 @@
+{
+  "imports": {
+    "openapi-fetch": "npm:openapi-fetch@^0.13.0",
+    "openapi-typescript": "npm:openapi-typescript@^7.4.3"
+  }
+}
